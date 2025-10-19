@@ -1,0 +1,109 @@
+---
+title: "lab 35 md"
+output: html_document
+date: "2025-10-19"
+---
+
+#podemos usar una base con caracteristicas de autos, esta base ya está en R
+Se consulta de esta forma: 
+```{r}
+mtcars
+class(mtcars)
+
+```
+
+vamos a elaborar mapas de calor, para lo cual requerimos una matriz
+procedemos a obtener datos en forma de matriz 
+```{r}
+mtcars_matrix <- data.matrix(mtcars)
+class(mtcars_matrix)
+
+```
+
+creamos un mapa de calor 
+```{r}
+heatmap(mtcars_matrix)
+```
+
+
+
+#?Se parece a lo que esperabas?
+# Mire la p?gina de ayuda de la funci?n y lea la descripci?n del scale argumento en particular
+
+con esta función podemos consultar como funciona el heatmap:
+?heatmap
+
+
+procedemos a crear un mapa de calor pero la escala se va a tomar a partir de las columnas
+```{r}
+heatmap(mtcars_matrix, scale = "colum")
+
+```
+
+
+#La escala es importante: los valores deben centrarse y escalarse en filas o columnas. 
+#En nuestro caso, queremos visualizar altibajos en cada variable, que est?n en columnas.
+
+
+
+
+# hAcer nuestra propia paleta de colores
+```{r}
+colores_blue <- colorRampPalette(c("lightblue","cornflowerblue","navyblue"))(256)
+
+```
+
+# con AMBOS denogramas por default, se ordenan las variables por cluster de pertenencia
+```{r}
+heatmap(mtcars_matrix, scale = "colum", col=colores_blue)
+
+```
+
+
+#Eliminar dendrogramas
+#El dendrograma de columna realmente no tiene sentido para este conjunto de datos. Rowv
+#y Colvse puede configurar para NAeliminar dendrogramas, lo que tambi?n significa que los datos 
+#no se reorganizar?n de acuerdo con el m?todo de agrupaci?n.
+
+# se respeta el orden de las columnas, porque se borr? el dendrograma de las columnas, ya no se ordena por cluster
+# no se respeta el orden de los renglones, porque estos si tienen clusteo
+```{r}
+heatmap(mtcars_matrix, scale = "colum", col=colores_blue, Colv = NA, margins = c(5,10),
+        xlab = "especificación de caracteristicas", 
+        ylab = "modelos de autos",
+        main = "mapa de calor")
+```
+
+
+
+#mapa de calor con el color viridis (priero cargamos la libreria)
+```{r}
+library(viridis)
+
+heatmap(mtcars_matrix, scale = "colum", col=viridis_pal(option = "viridis")(6),
+        Colv = NA, margins = c(5,10),
+        xlab = "especificación de caracteristicas", 
+        ylab = "modelos de autos",
+        main = "mapa de calor")
+```
+
+
+#prueba con color "magma"
+```{r}
+heatmap(mtcars_matrix, scale = "colum", col=viridis_pal(option = "magma")(6),
+        Colv = NA, margins = c(5,10),
+        xlab = "especificación de caracteristicas", 
+        ylab = "modelos de autos",
+        main = "mapa de calor")
+```
+
+
+#prueba con color rainbown
+```{r}
+heatmap(mtcars_matrix, scale = "colum", col= rainbow(6),
+        Colv = NA, margins = c(5,10),
+        xlab = "especificación de caracteristicas", 
+        ylab = "modelos de autos",
+        main = "mapa de calor")
+```
+

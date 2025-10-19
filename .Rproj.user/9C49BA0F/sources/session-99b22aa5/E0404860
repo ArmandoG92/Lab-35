@@ -1,11 +1,11 @@
 {
     "id": "E0404860",
-    "path": null,
-    "project_path": null,
+    "path": "~/GitHub/Lab-35/lab 35.Rmd",
+    "project_path": "lab 35.Rmd",
     "type": "r_markdown",
     "hash": "3206546626",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1760840267660.0,
     "source_on_save": false,
     "relative_order": 4,
@@ -17,11 +17,11 @@
         "scrollLine": "75"
     },
     "folds": "",
-    "lastKnownWriteTime": 2524841579331025001,
-    "encoding": "",
+    "lastKnownWriteTime": 1760840991,
+    "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1760840563510,
+    "last_content_update": 1760840991177,
     "read_only": false,
     "read_only_alternatives": []
 }
